@@ -23,11 +23,11 @@ AUTHKEY = os.getenv("AUTHKEY")
 @app.route('/api/find', methods=['GET'])
 @cache.cached(timeout=3600, key_prefix=make_cache_key)
 def search_missing_person():
-    name = request.args.get('name', default=" ", type=str)
+    name = request.args.get('name', default="", type=str)
     age = request.args.get('age', default=None, type=int)
 
     if name is not None or age is not None :
-        res = requests.post("https://www.safe182.go.kr/api/lcm/findChildList.do", params={"esntlId" : ESNTLID, "authKey" : AUTHKEY, "rowSize" : "100", "nm" : name, "age1" : age}) 
+        res = requests.post("https://www.safe182.go.kr/api/lcm/findChildList.do", params={"esntlId" : ESNTLID, "authKey" : AUTHKEY, "rowSize" : "100", "nm" : name, "age1" : age, "age2": age}) 
         return res.json()
     else:
         return jsonify({"error" : "no input value"})
