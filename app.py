@@ -11,6 +11,7 @@ import numpy as np
 from tensorflow.keras.models import load_model
 from flask_caching import Cache
 import sqlite3
+import base64
 
 app = Flask(__name__)
 app.config.from_mapping({"DEBUG": True, "CACHE_TYPE": "simple", "CACHE_DEFAULT_TIMEOUT": 300})
@@ -29,10 +30,13 @@ AUTHKEY = os.getenv("AUTHKEY")
 def search_missing_person():
     name = request.args.get('name', default="", type=str)
     age = request.args.get('age', default=None, type=int)
+    rowSize = request.args.get('rowsize', default=100, type=int)
+    target = request.args.get('target', default=None, type=str)
 
     if name is not None or age is not None :
-        res = requests.post("https://www.safe182.go.kr/api/lcm/findChildList.do", params={"esntlId" : ESNTLID, "authKey" : AUTHKEY, "rowSize" : "100", "nm" : name, "age1" : age, "age2": age, }) 
-        return res.json()
+        res = requests.post("https://www.safe182.go.kr/api/lcm/findChildList.do", params={"esntlId" : ESNTLID, "authKey" : AUTHKEY, "rowSize" : rowSize, "nm" : name, "age1" : age, "age2" : age, "writngTrgetDscds" : target}) 
+        data = res.json()['list']
+        return jsonify(data)
     else:
         return jsonify({"error" : "no input value"})
     
@@ -72,7 +76,6 @@ def use_ai():
     similar_distance_uid_list = cursor.fetchall()
 
     return jsonify({'distance_list': distance_list, 'similar_distance_list' : similar_distance_list, 'similar_distance_uid' : similar_distance_uid_list})
-
 
 if __name__ == '__main__':
 	app.run(debug=True)
