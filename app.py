@@ -11,7 +11,6 @@ import numpy as np
 from tensorflow.keras.models import load_model
 from flask_caching import Cache
 import sqlite3
-import base64
 
 app = Flask(__name__)
 app.config.from_mapping({"DEBUG": True, "CACHE_TYPE": "simple", "CACHE_DEFAULT_TIMEOUT": 300})
@@ -76,6 +75,26 @@ def use_ai():
     similar_distance_uid_list = cursor.fetchall()
 
     return jsonify({'distance_list': distance_list, 'similar_distance_list' : similar_distance_list, 'similar_distance_uid' : similar_distance_uid_list})
+
+@app.route('/api/img_to_vector', methods=['POST'])
+def img_to_vector():
+    try:
+        fixed_image = request.files['FixImage']
+        id = request.form['id']
+
+        fixed_image.save('static/images/fixed_image.jpg')
+
+        if is_image(fixed_image):
+            return jsonify({"error" : "you are not input file or file is not img"})
+        
+        fixed_image_embedded_face = embeding.get_embedded_face('static/images/fixed_image.jpg')
+
+        cursor.execute('INSERT INTO AIvector (session_id, vector) VALUES (?, ?)', (id,  str(fixed_image_embedded_face)))
+        conn.commit()
+
+        return 'success', 200
+    except:
+        return 'fail', 500
 
 if __name__ == '__main__':
 	app.run(debug=True)

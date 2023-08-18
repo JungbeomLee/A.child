@@ -1,6 +1,0 @@
-CREATE TABLE IF EXISTS AIvector(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    session_id TEXT NOT NULL,
-    img BLOB NOT NULL,
-    vector TEXT NOT NULL
-);
