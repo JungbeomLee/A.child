@@ -11,10 +11,11 @@ import numpy as np
 from tensorflow.keras.models import load_model
 from flask_caching import Cache
 import sqlite3
+import base64
 
 app = Flask(__name__)
 app.config.from_mapping({"DEBUG": True, "CACHE_TYPE": "simple", "CACHE_DEFAULT_TIMEOUT": 300})
-embeding = FaceEmbedder(model_path = 'models/facenet_model.h5')
+embeding = FaceEmbedder(model_path = 'models/FaceNet_Lite_model.tflite')
 cache = Cache(app)
 conn = sqlite3.connect('database.db', check_same_thread=False)
 cursor = conn.cursor()
@@ -35,6 +36,10 @@ def search_missing_person():
     if name is not None or age is not None :
         res = requests.post("https://www.safe182.go.kr/api/lcm/findChildList.do", params={"esntlId" : ESNTLID, "authKey" : AUTHKEY, "rowSize" : rowSize, "nm" : name, "age1" : age, "age2" : age, "writngTrgetDscds" : target}) 
         data = res.json()['list']
+        for i in data:
+            base64image = i['tknphotoFile']  
+            if base64image is not None:
+                i['tknphotoFile'] = str(base64.b64decode(base64image))
         return jsonify(data)
     else:
         return jsonify({"error" : "no input value"})
