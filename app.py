@@ -36,10 +36,6 @@ def search_missing_person():
     if name is not None or age is not None :
         res = requests.post("https://www.safe182.go.kr/api/lcm/findChildList.do", params={"esntlId" : ESNTLID, "authKey" : AUTHKEY, "rowSize" : rowSize, "nm" : name, "age1" : age, "age2" : age, "writngTrgetDscds" : target}) 
         data = res.json()['list']
-        for i in data:
-            base64image = i['tknphotoFile']  
-            if base64image is not None:
-                i['tknphotoFile'] = str(base64.b64decode(base64image))
         return jsonify(data)
     else:
         return jsonify({"error" : "no input value"})
@@ -47,7 +43,6 @@ def search_missing_person():
 @app.route('/api/use_ai', methods=['POST'])
 def use_ai():
     fixed_image = request.files['FixImage']
-    id = request.form['id']
 
     distance_list = [] 
 
@@ -63,18 +58,15 @@ def use_ai():
 
     for i in all_embedded_face:
         DB_embedded_face = i[0]
-        DB_embedded_face = np.array(DB_embedded_face[1:-1].split(), dtype=np.float32)
+        DB_embedded_face = string_to_np_array(DB_embedded_face)
         distance_list.append(embeding._get_distance(fixed_image_embedded_face,DB_embedded_face))
-
-    cursor.execute('INSERT INTO AIvector (session_id, img, vector) VALUES (?,?,?)', (id, read_image('static/images/fixed_image.jpg'), str(fixed_image_embedded_face)))
-    conn.commit()
 
     similar_distance_list = embeding._get_most_similar_vactor(distance_list)
     distance_list = [float(x) for x in distance_list]
     similar_distance_list_index = []
 
     for i in similar_distance_list:
-        similar_distance_list_index.append(i[0])
+        similar_distance_list_index.append((i[0])+1)
     
     cursor.execute('SELECT session_id FROM AIvector WHERE id IN(?,?,?,?,?)', similar_distance_list_index)
     similar_distance_uid_list = cursor.fetchall()
@@ -94,12 +86,15 @@ def img_to_vector():
         
         fixed_image_embedded_face = embeding.get_embedded_face('static/images/fixed_image.jpg')
 
+        if fixed_image_embedded_face is None:
+            return 'error : face detections fail', 500
+        
         cursor.execute('INSERT INTO AIvector (session_id, vector) VALUES (?, ?)', (id,  str(fixed_image_embedded_face)))
         conn.commit()
 
         return 'success', 200
-    except:
-        return 'fail', 500
+    except Exception as e:
+        return jsonify({"error" : e})
 
 if __name__ == '__main__':
 	app.run(debug=True)

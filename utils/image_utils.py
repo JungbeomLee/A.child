@@ -15,3 +15,8 @@ def is_image(image):
         return False
     except:
         return True
+    
+def string_to_np_array(s):
+    s = s.replace("[[", "").replace("]]", "").strip()
+    numbers = [float(num) for num in s.split()]
+    return np.array(numbers, dtype=np.float32)
