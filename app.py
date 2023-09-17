@@ -59,9 +59,9 @@ def use_ai():
     for i in all_embedded_face:
         DB_embedded_face = i[0]
         DB_embedded_face = string_to_np_array(DB_embedded_face)
-        distance_list.append(embeding._get_distance(fixed_image_embedded_face,DB_embedded_face))
+        distance_list.append(embeding.get_distance(fixed_image_embedded_face,DB_embedded_face))
 
-    similar_distance_list = embeding._get_most_similar_vactor(distance_list)
+    similar_distance_list = embeding.get_most_similar_vactor(distance_list)
     distance_list = [float(x) for x in distance_list]
     similar_distance_list_index = []
 
