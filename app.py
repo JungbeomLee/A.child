@@ -11,7 +11,6 @@ import numpy as np
 from tensorflow.keras.models import load_model
 from flask_caching import Cache
 import sqlite3
-import base64
 
 app = Flask(__name__)
 app.config.from_mapping({"DEBUG": True, "CACHE_TYPE": "simple", "CACHE_DEFAULT_TIMEOUT": 300})
@@ -95,6 +94,19 @@ def img_to_vector():
         return 'success', 200
     except Exception as e:
         return jsonify({"error" : e})
+    
+@app.route('/api/delete_vector', methods=['POST'])
+def delete_vector():
+    try:
+        id = request.form['id']
 
+        cursor.execute("DELETE FROM AIvector WHERE session_id = ?", (id,)) 
+
+        conn.commit()
+
+        return 'delete success', 200
+    except Exception as e:
+        return jsonify({"error" : e})
+    
 if __name__ == '__main__':
 	app.run(debug=True)
