@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.woojun.ai.fragment.main.ChildrenListFragment"
+    android:scrollbars="none"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <HorizontalScrollView
+            android:layout_marginTop="5dp"
+            android:id="@+id/button_scroll_view"
+            android:contentDescription="HorizontalScrollView"
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            android:layout_width="match_parent"
+            android:layout_height="96dp">
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/new_children_button"
+                    android:layout_width="210dp"
+                    android:layout_height="46dp"
+                    android:layout_marginHorizontal="32dp"
+                    android:backgroundTint="#FAFAFA"
+                    app:cardCornerRadius="100dp">
+
+                    <TextView
+                        android:id="@+id/new_children_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center"
+                        android:text="신규 등록 실종아동"
+                        android:textColor="#8696BB"
+                        android:textSize="16sp" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/all_children_button"
+                    android:backgroundTint="#EBF5FF"
+                    app:cardCornerRadius="100dp"
+                    android:layout_width="210dp"
+                    android:layout_height="46dp">
+
+                    <TextView
+                        android:id="@+id/all_children_text"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textColor="#4894fe"
+                        android:textSize="16sp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="전체 실종아동 목록"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/long_children_button"
+                    android:backgroundTint="#FAFAFA"
+                    android:layout_marginHorizontal="32dp"
+                    app:cardCornerRadius="100dp"
+                    android:layout_width="210dp"
+                    android:layout_height="46dp">
+
+                    <TextView
+                        android:id="@+id/long_children_text"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textColor="#8696BB"
+                        android:textSize="16sp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="장기 미확인 실종 아동"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <LinearLayout
+            android:background="#F5F5F5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+
+
+        <LinearLayout
+            android:id="@+id/option_button"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="14dp"
+            android:layout_gravity="end"
+            android:gravity="center"
+            android:layout_width="50dp"
+            android:layout_height="50dp">
+
+            <ImageView
+                app:tint="#8696BB"
+                android:layout_width="40dp"
+                android:layout_height="38dp"
+                android:src="@drawable/option_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animation_view"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="loading.json"
+                app:lottie_loop="true" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:visibility="gone"
+                android:id="@+id/children_list"
+                android:nestedScrollingEnabled="false"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/before_button"
+                android:gravity="center"
+                android:layout_width="50dp"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:scaleX="-1"
+                    android:src="@drawable/arrow_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    app:tint="#4894fe" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/page_number_text"
+                android:textSize="16sp"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="#8696BB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:id="@+id/after_button"
+                android:gravity="center"
+                android:layout_width="50dp"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:src="@drawable/arrow_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    app:tint="#4894fe" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

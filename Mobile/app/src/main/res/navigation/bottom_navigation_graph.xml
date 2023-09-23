@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_navigation_graph"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.woojun.ai.fragment.main.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home_to_childrenInfoInternalFragment2"
+            app:destination="@id/childrenInfoInternalFragment" />
+        <action
+            app:enterAnim="@anim/search_aniim"
+            android:id="@+id/action_home_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_home_to_cameraFragment"
+            app:destination="@id/cameraFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setting"
+        android:name="com.woojun.ai.fragment.main.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_setting_to_rePersonalInformationFragment"
+            app:destination="@id/rePersonalInformationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/childrenInfo"
+        android:name="com.woojun.ai.fragment.main.MyChildInfoFragment"
+        android:label="fragment_children_info"
+        tools:layout="@layout/fragment_my_child_info" >
+        <action
+            android:id="@+id/action_childrenInfo_to_myChildInfoRegisterFragment"
+            app:destination="@id/myChildInfoRegisterFragment" />
+        <action
+            android:id="@+id/action_childrenInfo_to_childrenInfoInternalFragment"
+            app:destination="@id/childrenInfoInternalFragment" />
+        <action
+            android:id="@+id/action_childrenInfo_to_myChildrenInfoInternalFragment"
+            app:destination="@id/myChildrenInfoInternalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/childrenList"
+        android:name="com.woojun.ai.fragment.main.ChildrenListFragment"
+        android:label="fragment_children_list"
+        tools:layout="@layout/fragment_children_list" >
+        <action
+            android:id="@+id/action_childrenList_to_childrenInfoInternalFragment2"
+            app:destination="@id/childrenInfoInternalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/childrenInfoInternalFragment"
+        android:name="com.woojun.ai.fragment.main.ChildrenInfoInternalFragment"
+        android:label="fragment_children_info_internal"
+        tools:layout="@layout/fragment_children_info_internal" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.woojun.ai.fragment.main.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_childrenInfoInternalFragment"
+            app:destination="@id/childrenInfoInternalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/rePersonalInformationFragment"
+        android:name="com.woojun.ai.fragment.main.RePersonalInformationFragment"
+        android:label="fragment_re_personal_information"
+        tools:layout="@layout/fragment_re_personal_information" />
+    <fragment
+        android:id="@+id/myChildInfoRegisterFragment"
+        android:name="com.woojun.ai.fragment.main.MyChildInfoRegisterFragment"
+        android:label="fragment_my_child_info_register"
+        tools:layout="@layout/fragment_my_child_info_register" >
+        <action
+            android:id="@+id/action_myChildInfoRegisterFragment_to_cameraFragment"
+            app:destination="@id/cameraFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="com.woojun.ai.fragment.main.CameraFragment"
+        android:label="fragment_camera"
+        tools:layout="@layout/fragment_camera" >
+        <action
+            android:id="@+id/action_cameraFragment_to_home"
+            app:destination="@id/home" />
+        <action
+            android:id="@+id/action_cameraFragment_to_findChildrenListFragment"
+            app:destination="@id/findChildrenListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/findChildrenListFragment"
+        android:name="com.woojun.ai.fragment.main.FindChildrenListFragment"
+        android:label="fragment_find_children_list"
+        tools:layout="@layout/fragment_find_children_list" >
+        <action
+            android:id="@+id/action_findChildrenListFragment_to_myChildrenInfoInternalFragment"
+            app:destination="@id/myChildrenInfoInternalFragment" />
+        <action
+            android:id="@+id/action_findChildrenListFragment_to_home2"
+            app:destination="@id/home" />
+    </fragment>
+    <fragment
+        android:id="@+id/myChildrenInfoInternalFragment"
+        android:name="com.woojun.ai.fragment.main.MyChildrenInfoInternalFragment"
+        android:label="fragment_my_children_info_internal"
+        tools:layout="@layout/fragment_my_children_info_internal" />
+</navigation>

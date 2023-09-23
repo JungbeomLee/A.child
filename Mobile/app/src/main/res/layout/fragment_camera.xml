@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.main.CameraFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.otaliastudios.cameraview.CameraView
+            android:id="@+id/camera"
+            android:keepScreenOn="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:gravity="center"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_reqular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="얼굴을 가이드라인에 맞추고 촬영해주세요\n얼굴의 그림자가 있으면 안됩니다"
+            app:layout_constraintBottom_toTopOf="@+id/image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            app:tint="@color/white"
+            android:layout_marginBottom="100dp"
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="512dp"
+            android:layout_gravity="center"
+            android:src="@drawable/guideline"
+            app:layout_constraintBottom_toBottomOf="@+id/camera"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:layout_constraintBottom_toBottomOf="@+id/camera"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/captureBtn"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                app:cardCornerRadius="50dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/change_button"
+                android:backgroundTint="#292929"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                app:cardCornerRadius="40dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/captureBtn"
+                app:layout_constraintTop_toTopOf="parent" >
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:src="@drawable/change_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    app:tint="@color/white" />
+
+            </androidx.cardview.widget.CardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

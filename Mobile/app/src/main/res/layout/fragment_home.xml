@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    android:overScrollMode="never"
+    android:background="@color/white"
+    tools:context="com.woojun.ai.fragment.main.HomeFragment">
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginHorizontal="26dp"
+            android:layout_marginTop="22dp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="안녕하세요"
+                    android:textColor="#8696bb"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/hello_user_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textColor="#0d1b34"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="50dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" >
+
+                <ImageView
+                    android:id="@+id/profile"
+                    android:src="@drawable/profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.cardview.widget.CardView
+            android:visibility="gone"
+            android:id="@+id/children_identification_button"
+            android:layout_marginHorizontal="26dp"
+            android:layout_marginTop="22dp"
+            app:cardCornerRadius="10dp"
+            android:backgroundTint="#4894fe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_marginVertical="10dp"
+                android:layout_marginHorizontal="22dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginStart="14dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:gravity="center"
+                    android:text="실종아동 신원확인 바로가기"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/arrow_right"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" >
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:src="@drawable/arrow_right"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/main_children_info_registration_button"
+            android:layout_marginHorizontal="26dp"
+            android:layout_marginTop="22dp"
+            app:cardCornerRadius="10dp"
+            android:backgroundTint="#4894fe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginHorizontal="22dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_marginTop="22dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp">
+
+                    <androidx.cardview.widget.CardView
+                        android:visibility="gone"
+                        android:outlineProvider="none"
+                        android:id="@+id/child_profile_box"
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:backgroundTint="@color/white"
+                        app:cardCornerRadius="26dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/child_profile"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <LinearLayout
+                        android:layout_marginStart="14dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        app:layout_constraintStart_toEndOf="@+id/child_profile_box">
+
+                        <TextView
+                            android:id="@+id/child_registration_text"
+                            android:gravity="center"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="아이를 등록해주세요"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
+                        <TextView
+                            android:visibility="gone"
+                            android:id="@+id/child_name_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="이정범"
+                            android:textColor="@color/white"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/child_sex_and_birth_text"
+                            android:visibility="gone"
+                            android:text="남성 · 2005년생"
+                            android:textColor="#cbe1ff"
+                            android:textSize="16sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+
+                    </LinearLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/arrow_right"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" >
+
+                        <ImageView
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:src="@drawable/arrow_right"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="18dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#26ffffff"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/child_info_side_bar"
+                    android:visibility="gone"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="18.5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/calendar"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"/>
+
+                        <LinearLayout
+                            android:layout_marginStart="10dp"
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:textSize="14sp"
+                                android:textColor="@color/white"
+                                android:text="마지막 신원 등록"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/last_identity_date"
+                                android:textSize="14sp"
+                                android:textColor="@color/white"
+                                android:text="2023. 06. 22"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/clock"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"/>
+
+                        <LinearLayout
+                            android:layout_marginStart="10dp"
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:textSize="14sp"
+                                android:textColor="@color/white"
+                                android:text="다음 신원 업데이트"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/next_identity_date"
+                                android:textSize="14sp"
+                                android:textColor="@color/white"
+                                android:text="2023. 12. 22"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:outlineProvider="none"
+            android:backgroundTint="#fafafa"
+            app:strokeColor="#c8c8c8"
+            app:strokeWidth="0.8dp"
+            android:layout_marginHorizontal="26dp"
+            android:layout_marginTop="22dp"
+            app:cardCornerRadius="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="62dp">
+
+            <LinearLayout
+                android:id="@+id/search_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/search" />
+
+                <TextView
+                    android:layout_marginStart="14dp"
+                    android:layout_gravity="center"
+                    android:text="실종 아동 검색하기"
+                    android:textSize="16sp"
+                    android:textColor="#8696BB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_marginHorizontal="26dp"
+            android:layout_marginTop="26dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="138dp">
+
+            <LinearLayout
+                android:id="@+id/children_info_button"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+                <androidx.cardview.widget.CardView
+                    android:outlineProvider="none"
+                    android:layout_gravity="center"
+                    app:cardCornerRadius="100dp"
+                    android:backgroundTint="#fafafa"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp">
+
+                    <ImageView
+                        android:src="@drawable/face_id"
+                        android:layout_gravity="center"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"/>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="자녀정보\n바로가기"
+                    android:textColor="#8696bb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/children_list_button"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+                <androidx.cardview.widget.CardView
+                    android:outlineProvider="none"
+                    android:layout_gravity="center"
+                    app:cardCornerRadius="100dp"
+                    android:backgroundTint="#fafafa"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp">
+
+                    <ImageView
+                        android:src="@drawable/list"
+                        android:layout_gravity="center"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"/>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="실종아동\n목록"
+                    android:textColor="#8696bb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/report_children_button"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+                <androidx.cardview.widget.CardView
+                    android:outlineProvider="none"
+                    android:layout_gravity="center"
+                    app:cardCornerRadius="100dp"
+                    android:backgroundTint="#fafafa"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp">
+
+                    <ImageView
+                        android:src="@drawable/call"
+                        android:layout_gravity="center"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"/>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="실종아동\n신고하기"
+                    android:textColor="#8696bb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/setting_button"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+                <androidx.cardview.widget.CardView
+                    android:outlineProvider="none"
+                    android:layout_gravity="center"
+                    app:cardCornerRadius="100dp"
+                    android:backgroundTint="#fafafa"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp">
+
+                    <ImageView
+                        android:src="@drawable/user"
+                        android:layout_gravity="center"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"/>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="내 설정\n바로가기"
+                    android:textColor="#8696bb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginHorizontal="26dp"
+            android:orientation="vertical"
+            android:layout_marginTop="35dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="신규 실종 아동"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/option_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="50dp"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="38dp"
+                    android:src="@drawable/option_icon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="#8696BB" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <RelativeLayout
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="18dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animation_view"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="loading.json"
+                app:lottie_loop="true" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:visibility="gone"
+                android:id="@+id/children_list"
+                android:nestedScrollingEnabled="false"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>
