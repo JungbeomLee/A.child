@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "50978555243",
+    "project_id": "ai-child-26b85",
+    "storage_bucket": "ai-child-26b85.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:50978555243:android:21b68a13046f8eb635b82e",
+        "android_client_info": {
+          "package_name": "com.woojun.ai"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "50978555243-1pomgmsvlqvre8mpt8kfpv07iljrt8e8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgBQ_wJxMA8VtOCgSZqq7qM9DmuP183lU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "50978555243-1pomgmsvlqvre8mpt8kfpv07iljrt8e8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

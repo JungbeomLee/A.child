@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:title="홈"
+        android:icon="@drawable/home"
+        android:id="@+id/home"
+        app:cnb_iconColor="#63B4FF"
+        app:showAsAction="withText" />
+
+    <item android:title="아동 목록"
+        android:icon="@drawable/list"
+        android:id="@+id/childrenList"
+        app:cnb_iconColor="#63B4FF"
+        app:showAsAction="withText" />
+
+    <item android:title="자녀 정보"
+        android:icon="@drawable/face_id"
+        android:id="@+id/childrenInfo"
+        app:cnb_iconColor="#63B4FF"
+        app:showAsAction="withText" />
+
+    <item android:title="설정"
+        android:icon="@drawable/user"
+        android:id="@+id/setting"
+        app:cnb_iconColor="#63B4FF"
+        app:showAsAction="withText" />
+
+</menu>

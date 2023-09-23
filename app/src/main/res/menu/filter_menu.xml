@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/children"
+        android:title="아동(19세 미만)" />
+    <item
+        android:id="@+id/adult"
+        android:title="성인(19세 이상)" />
+    <item
+        android:id="@+id/all"
+        android:title="전체" />
+</menu>
